@@ -1,3 +1,5 @@
+using ABCPublishing.Api.Repositories;
+
 namespace ABCPublishing.Api;
 
 public class Program
@@ -9,6 +11,10 @@ public class Program
         // Add services to the container.
 
         builder.Services.AddControllers();
+
+        builder.Services.AddSingleton<ISectionRepository>(provider =>
+            new SectionRepository("BookData/the-adventures-of-sherlock-holmes.json"));
+
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
 
