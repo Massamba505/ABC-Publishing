@@ -1,5 +1,4 @@
 ﻿using ABCPublishing.Api.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ABCPublishing.Api.Controllers
@@ -13,8 +12,8 @@ namespace ABCPublishing.Api.Controllers
         [HttpGet("section/{sectionName}")]
         public ActionResult<BookSection> GetSection(string sectionName)
         {
-            var bookService = new BookService();
-            var section = bookService.GetSection(_bookPath, sectionName);
+            var bookService = new BookService(_bookPath);
+            var section = bookService.GetSection(sectionName);
 
             if (section == null)
             {

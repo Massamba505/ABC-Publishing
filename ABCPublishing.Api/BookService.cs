@@ -4,17 +4,24 @@ using ABCPublishing.Api.Models;
 namespace ABCPublishing.Api;
 
 public class BookService
-{ 
-    public Dictionary<string, BookSection>? GetAllSections(string bookPath)
+{
+    private readonly string BookPath;
+    
+    public BookService(string bookPath)
     {
-        var book = File.ReadAllText(bookPath);
+        BookPath = bookPath;
+    }
+    
+    public Dictionary<string, BookSection>? GetAllSections()
+    {
+        var book = File.ReadAllText(BookPath);
 
         return JsonSerializer.Deserialize<Dictionary<string, BookSection>>(book, new JsonSerializerOptions(JsonSerializerDefaults.Web));
     }
 
-    public BookSection? GetSection(string bookPath, string sectionName)
+    public BookSection? GetSection(string sectionName)
     {
-        var sections = GetAllSections(bookPath);
+        var sections = GetAllSections();
 
         if (sections != null && sections.ContainsKey(sectionName))
         {
