@@ -1,36 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Navigation from "../components/Navigation";
-import { getData } from "../Util/FetchData";
+import useFetchData from "../hooks/useFetchData";
 
 function Book() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
   const { bookname, chapter } = useParams();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const result = await getData(chapter);
-
-        if (!result) {
-          setError("Chapter not found");
-        } else {
-          setData(result);
-          setError(null);
-        }
-      } catch (err) {
-        setError("Error loading data");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [chapter]);
+  const { data, loading, error } = useFetchData(chapter);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div style={{ color: "red" }}>{error}</div>;
