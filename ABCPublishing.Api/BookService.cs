@@ -4,20 +4,12 @@ using ABCPublishing.Api.Models;
 namespace ABCPublishing.Api;
 
 public class BookService
-{
-    private readonly string BookDirectory = "BookData";
-    private readonly string BookFileName = "the-adventures-of-sherlock-holmes.json";
-    private readonly string _BookPath;
-
-    public BookService()
+{ 
+    public Dictionary<string, BookSection>? GetAllSections(string bookPath)
     {
-        _BookPath = Path.Combine(AppContext.BaseDirectory, BookDirectory, BookFileName);
-    }
-    
-    public Dictionary<string, BookSection>? GetAllSections()
-    {
-        var book = File.ReadAllText(_BookPath);
+        var book = File.ReadAllText(bookPath);
 
         return JsonSerializer.Deserialize<Dictionary<string, BookSection>>(book);
     }
+
 }
