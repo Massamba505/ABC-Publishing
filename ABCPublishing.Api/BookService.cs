@@ -15,8 +15,9 @@ public class BookService
     public Dictionary<string, BookSection>? GetAllSections()
     {
         var book = File.ReadAllText(BookPath);
+        var serializerOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web);
 
-        return JsonSerializer.Deserialize<Dictionary<string, BookSection>>(book, new JsonSerializerOptions(JsonSerializerDefaults.Web));
+        return JsonSerializer.Deserialize<Dictionary<string, BookSection>>(book, serializerOptions);
     }
 
     public BookSection? GetSection(string sectionName)
