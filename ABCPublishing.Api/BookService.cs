@@ -12,4 +12,15 @@ public class BookService
         return JsonSerializer.Deserialize<Dictionary<string, BookSection>>(book);
     }
 
+    public BookSection? GetSection(string bookPath, string sectionName)
+    {
+        var sections = GetAllSections(bookPath);
+
+        if (sections != null && sections.ContainsKey(sectionName))
+        {
+            return sections[sectionName];
+        }
+
+        return null;
+    }
 }
