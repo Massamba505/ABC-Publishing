@@ -1,5 +1,10 @@
-import data from "../assets/the-adventures-of-sherlock-holmes-sample.json";
+export async function getData(path) {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const response = await fetch(`${apiUrl}/${path}`);
 
-export function getData(what) {
-  return data[`${what}`];
+  if (!response.ok) {
+    return null;
+  }
+
+  return response.json();
 }
