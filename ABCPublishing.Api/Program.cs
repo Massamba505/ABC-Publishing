@@ -12,7 +12,20 @@ public class Program
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
 
+        builder.Services.AddCors(option =>
+        {
+            option.AddPolicy("CorsPolicy", policy =>
+            {
+                policy.WithOrigins("http://localhost:5173")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+            });
+        });
+
         var app = builder.Build();
+
+        app.UseCors("CorsPolicy");
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
