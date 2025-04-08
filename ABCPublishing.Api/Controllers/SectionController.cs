@@ -5,11 +5,11 @@ namespace ABCPublishing.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PageReaderController : ControllerBase
+    public class SectionController : ControllerBase
     {
         private readonly string _bookPath = "C:/bootcamps/coding/ABC Publishing/Backend/ABCPublishing/ABCPublishing.Api/BookData/the-adventures-of-sherlock-holmes.json";
 
-        [HttpGet("section/{sectionName}")]
+        [HttpGet("{sectionName}")]
         public ActionResult<BookSection> GetSection(string sectionName)
         {
             var bookService = new BookService(_bookPath);
