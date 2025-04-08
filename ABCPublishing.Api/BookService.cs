@@ -9,7 +9,7 @@ public class BookService
     {
         var book = File.ReadAllText(bookPath);
 
-        return JsonSerializer.Deserialize<Dictionary<string, BookSection>>(book);
+        return JsonSerializer.Deserialize<Dictionary<string, BookSection>>(book, new JsonSerializerOptions(JsonSerializerDefaults.Web));
     }
 
     public BookSection? GetSection(string bookPath, string sectionName)

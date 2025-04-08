@@ -1,8 +1,7 @@
-﻿namespace ABCPublishing.Api.Models
+﻿namespace ABCPublishing.Api.Models;
+
+public class NavigationLink
 {
-    public class NavigationLinks
-    {
-        public string Text { get; set; }
-        public string Section { get; set; }
-    }
+    public string Text { get; set; }
+    public string Section { get; set; }
 }
