@@ -4,10 +4,11 @@ import ReadBook from "./pages/ReadBook";
 import BookTableOfContent from "./pages/BookTableOfContent";
 import NotFound from "./pages/NotFound";
 import Page from "./pages/page";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <>
+    <Layout>
       <Routes>
         <Route path="/" element={<Navigate to="/preface" />} />
         <Route path="/:section" element={<Page />} />
@@ -15,7 +16,7 @@ function App() {
         <Route path="/book/:bookname/chapter/:chapter" element={<ReadBook />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </Layout>
   );
 }
 

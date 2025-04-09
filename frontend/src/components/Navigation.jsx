@@ -1,34 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
 
 function Navigation({ navigations, where }) {
-  function getLinkPath(text, section) {
-    if (
-      section.toLowerCase() === "preface" ||
-      section.toLowerCase() === "table-of-contents"
-    ) {
+  const getLinkPath = (section) => {
+    const specialRoutes = ["preface", "table-of-contents"];
+    if (specialRoutes.includes(section.toLowerCase())) {
       return `/${section.toLowerCase()}`;
     }
-
-    return `/${where != null ? where + "/" : ""}${section}`;
-  }
+    return `/${where ? `${where}/` : ""}${section}`;
+  };
 
   return (
-    <div className="">
-      <h2 className="text-[#7D0A0A] text-3xl mt-1 mb-3 text-center font-bold">
+    <div className="navigation">
+      <h2 className="text-3xl font-bold text-center text-[#7D0A0A] mb-2">
         Navigation
       </h2>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-0.5">
         {navigations.map((navigation) => {
-          const path = getLinkPath(navigation["text"], navigation["section"]);
+          const path = getLinkPath(navigation.section);
           return (
-            <Link
-              className={`${navigation["text"]}`}
-              key={navigation["text"]}
+            <NavLink
+              key={navigation.text}
               to={path}
+              className="relative flex items-center py-1 text-[#7D0A0A] hover:text-[#BF3131] group"
             >
-              {`${navigation["text"]}`}
-            </Link>
+              <ChevronRight
+                className="w-5 h-5 transition-transform duration-300 ml-2 group-hover:translate-x-1"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              />
+              <span>{navigation.text}</span>
+            </NavLink>
           );
         })}
       </div>
