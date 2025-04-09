@@ -4,6 +4,7 @@ import useFetchData from "../hooks/useFetchData";
 import Header from "../components/Header";
 import Content from "../components/Content";
 import { useParams } from "react-router-dom";
+import Layout from "../components/Layout";
 
 function Page() {
   const { section } = useParams();
@@ -14,11 +15,11 @@ function Page() {
   if (error) return <div style={{ color: "red" }}>{error}</div>;
 
   return (
-    <div>
+    <Layout>
       <Header title={data.title} />
       <Content contents={data.content} />
       <Navigation where="book" navigations={data.navigation} />
-    </div>
+    </Layout>
   );
 }
 

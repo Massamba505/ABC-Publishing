@@ -14,8 +14,10 @@ function Navigation({ navigations, where }) {
   }
 
   return (
-    <div>
-      <h1 className="font-bold">Navigation</h1>
+    <div className="">
+      <h2 className="text-[#7D0A0A] text-3xl mt-1 mb-3 text-center font-bold">
+        Navigation
+      </h2>
       <div className="flex flex-col">
         {navigations.map((navigation) => {
           const path = getLinkPath(navigation["text"], navigation["section"]);
