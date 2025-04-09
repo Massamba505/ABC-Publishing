@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import useFetchData from "../hooks/useFetchData";
+import Header from "../components/Header";
+import Content from "../components/Content";
 
 function BookTableOfContent() {
   const { bookname } = useParams();
@@ -12,7 +14,8 @@ function BookTableOfContent() {
 
   return (
     <div>
-      <h1>{data.title}</h1>
+      <Header title={data.title} />
+      <Content contents={data.content} />
       <Navigation
         where={`book/${bookname}/chapter`}
         navigations={data.navigation}
