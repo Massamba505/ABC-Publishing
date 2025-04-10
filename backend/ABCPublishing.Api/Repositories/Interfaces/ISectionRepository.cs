@@ -4,6 +4,6 @@ namespace ABCPublishing.Api.Repositories;
 
 public interface ISectionRepository
 {
-    Dictionary<string, BookSection>? GetAllSections();
-    BookSection? GetSection(string sectionName);
+    Dictionary<string, Section>? GetAllSections();
+    Section? GetSection(string sectionName);
 }

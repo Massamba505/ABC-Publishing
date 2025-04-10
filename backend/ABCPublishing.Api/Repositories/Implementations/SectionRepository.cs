@@ -7,15 +7,15 @@ public class SectionRepository(string bookPath) : ISectionRepository
 {
     private readonly string _bookPath = bookPath;
 
-    public Dictionary<string, BookSection>? GetAllSections()
+    public Dictionary<string, Section>? GetAllSections()
     {
         var book = File.ReadAllText(_bookPath);
         var serializerOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web);
 
-        return JsonSerializer.Deserialize<Dictionary<string, BookSection>>(book, serializerOptions);
+        return JsonSerializer.Deserialize<Dictionary<string, Section>>(book, serializerOptions);
     }
 
-    public BookSection? GetSection(string sectionName)
+    public Section? GetSection(string sectionName)
     {
         var sections = GetAllSections();
 

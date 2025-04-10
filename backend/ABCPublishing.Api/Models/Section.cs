@@ -1,6 +1,6 @@
 ﻿namespace ABCPublishing.Api.Models;
 
-public class BookSection
+public class Section
 {
     public string Title { get; set; }
     public List<string> Content { get; set;}

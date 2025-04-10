@@ -11,8 +11,6 @@ public class Program
         // Add services to the container.
 
         builder.Services.AddControllers();
-        
-        var filePath = builder.Configuration.GetValue<string>("AppSettings:SherlockFilePath");
 
         builder.Services.AddSingleton<ISectionRepository>(provider =>
             new SectionRepository(

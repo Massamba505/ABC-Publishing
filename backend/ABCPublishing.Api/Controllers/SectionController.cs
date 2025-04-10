@@ -1,26 +1,38 @@
-﻿using ABCPublishing.Api.Models;
 using Microsoft.AspNetCore.Mvc;
+using ABCPublishing.Api.Models;
+using ABCPublishing.Api.Repositories;
 
-namespace ABCPublishing.Api.Controllers
+namespace ABCPublishing.Api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class SectionController(ISectionRepository sectionRepo) : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class SectionController : ControllerBase
+    private readonly ISectionRepository _sectionRepo = sectionRepo;
+
+    [HttpGet]
+    public ActionResult<Dictionary<string, Section>> GetAllSections()
     {
-        private readonly string _bookPath = "./Data/the-adventures-of-sherlock-holmes.json";
+        var sections = _sectionRepo.GetAllSections();
 
-        [HttpGet("{sectionName}")]
-        public ActionResult<BookSection> GetSection(string sectionName)
+        if (sections == null)
         {
-            var bookService = new BookService(_bookPath);
-            var section = bookService.GetSection(sectionName);
-
-            if (section == null)
-            {
-                return NotFound();
-            }
-            
-            return Ok(section);
+            return NotFound();
         }
+
+        return Ok(sections);
+    }
+
+    [HttpGet("{sectionName}")]
+    public ActionResult<Section> GetSection(string sectionName)
+    {
+        var section = _sectionRepo.GetSection(sectionName);
+
+        if (section == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(section);
     }
 }
