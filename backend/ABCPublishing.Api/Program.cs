@@ -1,4 +1,9 @@
-using ABCPublishing.Api.Repositories;
+using ABCPublishing.Api.Data;
+using ABCPublishing.Api.Repositories.Implementations;
+using ABCPublishing.Api.Repositories.Interfaces;
+using ABCPublishing.Api.Service.Implementations;
+using ABCPublishing.Api.Service.Interfaces;
+using Scalar.AspNetCore;
 
 namespace ABCPublishing.Api;
 
@@ -12,10 +17,13 @@ public class Program
 
         builder.Services.AddControllers();
 
-        builder.Services.AddSingleton<ISectionRepository>(provider =>
-            new SectionRepository(
+        builder.Services.AddSingleton<DataSource>(provider =>
+            new DataSource(
                 builder.Configuration.GetValue<string>("AppSettings:SherlockFilePath")
                 ));
+
+        builder.Services.AddScoped<ISectionRepository, SectionRepository>();
+        builder.Services.AddScoped<ISectionService, SectionService>();
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
@@ -39,6 +47,7 @@ public class Program
         if (app.Environment.IsDevelopment())
         {
             app.MapOpenApi();
+            app.MapScalarApiReference();
         }
 
         app.UseHttpsRedirection();

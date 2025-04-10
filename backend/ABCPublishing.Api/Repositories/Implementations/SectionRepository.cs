@@ -1,27 +1,25 @@
-using System.Text.Json;
+using ABCPublishing.Api.Data;
 using ABCPublishing.Api.Models;
+using ABCPublishing.Api.Repositories.Interfaces;
 
-namespace ABCPublishing.Api.Repositories;
+namespace ABCPublishing.Api.Repositories.Implementations;
 
-public class SectionRepository(string bookPath) : ISectionRepository
+public class SectionRepository(DataSource dataSource) : ISectionRepository
 {
-    private readonly string _bookPath = bookPath;
+    private readonly DataSource _dataSource = dataSource;
 
     public Dictionary<string, Section>? GetAllSections()
     {
-        var book = File.ReadAllText(_bookPath);
-        var serializerOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web);
-
-        return JsonSerializer.Deserialize<Dictionary<string, Section>>(book, serializerOptions);
+        return _dataSource.GetAllSections();
     }
 
     public Section? GetSection(string sectionName)
     {
-        var sections = GetAllSections();
+        var sections = _dataSource.GetAllSections();
 
-        if (sections != null && sections.TryGetValue(sectionName, out var section))
+        if (sections != null && sections.TryGetValue(sectionName, out Section? value))
         {
-            return section;
+            return value;
         }
 
         return null;

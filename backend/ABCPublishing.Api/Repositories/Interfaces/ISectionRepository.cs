@@ -1,6 +1,6 @@
 using ABCPublishing.Api.Models;
 
-namespace ABCPublishing.Api.Repositories;
+namespace ABCPublishing.Api.Repositories.Interfaces;
 
 public interface ISectionRepository
 {

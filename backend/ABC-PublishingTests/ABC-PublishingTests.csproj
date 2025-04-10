@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>ABC_PublishingTests</RootNamespace>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -15,10 +16,6 @@
     <PackageReference Include="NUnit.Analyzers" Version="4.4.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
     <PackageReference Include="Scalar.AspNetCore" Version="2.1.9" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ABCPublishing.Api\ABCPublishing.Api.csproj" />
   </ItemGroup>
 
   <ItemGroup>
