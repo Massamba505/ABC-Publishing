@@ -11,9 +11,13 @@ public class Program
         // Add services to the container.
 
         builder.Services.AddControllers();
+        
+        var filePath = builder.Configuration.GetValue<string>("AppSettings:SherlockFilePath");
 
         builder.Services.AddSingleton<ISectionRepository>(provider =>
-            new SectionRepository("BookData/the-adventures-of-sherlock-holmes.json"));
+            new SectionRepository(
+                builder.Configuration.GetValue<string>("AppSettings:SherlockFilePath")
+                ));
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();

@@ -7,7 +7,7 @@ namespace ABCPublishing.Api.Controllers
     [ApiController]
     public class SectionController : ControllerBase
     {
-        private readonly string _bookPath = "./BookData/the-adventures-of-sherlock-holmes.json";
+        private readonly string _bookPath = "./Data/the-adventures-of-sherlock-holmes.json";
 
         [HttpGet("{sectionName}")]
         public ActionResult<BookSection> GetSection(string sectionName)
