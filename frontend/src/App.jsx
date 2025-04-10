@@ -3,7 +3,7 @@ import "./App.css";
 import ReadBook from "./pages/ReadBook";
 import BookTableOfContent from "./pages/BookTableOfContent";
 import NotFound from "./pages/NotFound";
-import Page from "./pages/page";
+import Page from "./pages/Page";
 import Layout from "./components/Layout";
 
 function App() {
