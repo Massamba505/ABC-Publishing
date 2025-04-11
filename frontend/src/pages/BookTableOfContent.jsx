@@ -14,14 +14,14 @@ function BookTableOfContent() {
   if (error) return <NotFound />;
 
   return (
-    <>
+    <div className="Book">
       <Header title={data.title} />
       <Content contents={data.content} />
       <Navigation
         where={`book/${bookname}/chapter`}
         navigations={data.navigation}
       />
-    </>
+    </div>
   );
 }
 

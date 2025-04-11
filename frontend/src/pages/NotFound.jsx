@@ -7,7 +7,7 @@ function NotFound() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col mt-35 items-center justify-center">
+    <div className="not-found flex flex-col mt-35 items-center justify-center">
       <img
         className="w-40"
         style={{
