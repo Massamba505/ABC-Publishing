@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Creepster&family=Questrial&display=swap");
+
+.questrial {
+  font-family: "Questrial", Arial, Helvetica, sans-serif;
+}
