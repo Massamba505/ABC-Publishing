@@ -6,10 +6,10 @@ function Layout({ children }) {
   return (
     <div
       style={{ backgroundImage: `url(${wood})` }}
-      className="h-screen bg-cover bg-center flex justify-center items-center pt-5"
+      className="h-screen bg-cover bg-center flex flex-col justify-center items-center pt-3"
     >
       <div
-        className="pt-28 px-29 relative h-full w-full max-w-3xl bg-no-repeat"
+        className="relative h-full w-full max-w-3xl bg-no-repeat"
         style={{
           backgroundImage: `url(${page})`,
           backgroundSize: "contain",
@@ -17,7 +17,7 @@ function Layout({ children }) {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="relative inset-0 p-5 flex justify-center items-center">
+        <div className="relative pt-30 px-29 flex justify-center items-center">
           <div className="w-full h-full overflow-auto">{children}</div>
         </div>
       </div>
