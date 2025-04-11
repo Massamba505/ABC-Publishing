@@ -10,19 +10,6 @@ public class SectionController(ISectionService sectionService) : ControllerBase
 {
     private readonly ISectionService _sectionService = sectionService;
 
-    [HttpGet]
-    public ActionResult<Dictionary<string, Section>> GetAllSections()
-    {
-        var sections = _sectionService.GetAllSections();
-
-        if (sections == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(sections);
-    }
-
     [HttpGet("{sectionName}")]
     public ActionResult<Section> GetSection(string sectionName)
     {
