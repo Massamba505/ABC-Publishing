@@ -15,11 +15,11 @@ function Page() {
   if (error) return <NotFound />;
 
   return (
-    <>
+    <div className="page">
       <Header title={data.title} />
       <Content contents={data.content} />
       <Navigation where="book" navigations={data.navigation} />
-    </>
+    </div>
   );
 }
 

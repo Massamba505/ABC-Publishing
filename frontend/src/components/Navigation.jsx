@@ -13,7 +13,7 @@ function Navigation({ navigations, where }) {
   };
 
   return (
-    <div className="navigation questrial mt-10 flex flex-col gap-0.5">
+    <div className="navigation mt-10 flex flex-col gap-0.5">
       {navigations.map((navigation) => {
         const path = getLinkPath(navigation.section);
         const isReturn = navigation.text.toLowerCase().includes("return");
