@@ -4,14 +4,14 @@ namespace BookReadingLogicTest;
 
 public class Tests
 {
-    BookService _bookService;
+    //BookService _bookService;
 
     [SetUp]
     public void Setup()
     {
-        var bookDirectory = Path.Combine(Directory.GetCurrentDirectory(), "TestBookData", "testBook.json");
+        //var bookDirectory = Path.Combine(Directory.GetCurrentDirectory(), "TestBookData", "testBook.json");
         
-        _bookService = new BookService("TestBookData", "testBook");
+        //_bookService = new BookService("TestBookData", "testBook");
     }
 
     [Test]
