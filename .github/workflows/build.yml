@@ -20,15 +20,19 @@ jobs:
     - name: Restore dependencies
       run: |
         dotnet restore
+      working-directory: backend
 
     - name: Build the application
       run: |
         dotnet build --configuration Release --no-restore
+      working-directory: backend
 
     - name: Run tests (Optional)
       run: |
         dotnet test --no-build --verbosity normal
+      working-directory: backend
 
     - name: Publish the app (Optional, for deployment)
       run: |
         dotnet publish -c Release -o $HOME/published-app
+      working-directory: backend
