@@ -3,7 +3,7 @@ name: Build .NET Application
 on:
   push:
   pull_request:
-   
+
 jobs:
   build:
     runs-on: self-hosted
@@ -27,9 +27,14 @@ jobs:
         dotnet build --configuration Release --no-restore
       working-directory: backend
 
-    - name: Run tests (Optional)
+    - name: Build the tests (Optional, for running tests)
       run: |
-        dotnet test --no-build --verbosity normal
+        dotnet build backend/ABC-PublishingTests/ABC-PublishingTests.csproj --configuration Debug
+      working-directory: backend
+
+    - name: Run tests
+      run: |
+        dotnet test --verbosity normal
       working-directory: backend
 
     - name: Publish the app (Optional, for deployment)
