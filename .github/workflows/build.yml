@@ -27,17 +27,12 @@ jobs:
         dotnet build --configuration Release --no-restore
       working-directory: backend
 
-    - name: Build the tests (Optional, for running tests)
-      run: |
-        dotnet build backend/ABC-PublishingTests/ABC-PublishingTests.csproj --configuration Debug
-      working-directory: backend
-
     - name: Run tests
       run: |
         dotnet test --verbosity normal
       working-directory: backend
 
-    - name: Publish the app (Optional, for deployment)
+    - name: Publish the app
       run: |
         dotnet publish -c Release -o $HOME/published-app
       working-directory: backend
